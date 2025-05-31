@@ -1,0 +1,12 @@
+/* Basic styles - can be empty or have a body style */
+body {
+    font-family: sans-serif;
+    margin: 20px;
+}
+div {
+    margin-bottom: 10px;
+}
+label {
+    display: inline-block;
+    width: 100px;
+}

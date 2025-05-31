@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Plant Tracker</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <h2 id="welcomeMessage">Welcome!</h2>
+    <p><strong>Your Points:</strong> <span id="userPoints">Loading...</span></p>
+    <button id="logoutButton">Logout</button>
+
+    <h3>Your Weekly Plant Progress</h3>
+    <div id="plantProgress">
+        <!-- Progress will be displayed here -->
+        Loading...
+    </div>
+
+    <h3>Log a Meal</h3>
+    <form id="logMealForm">
+        <div id="mealItemsContainer">
+            <!-- Dynamically added meal items will go here -->
+        </div>
+        <button type="button" id="addMealItemButton">Add Ingredient/Recipe to Meal</button>
+        <br><br>
+        <button type="submit">Log This Meal</button>
+    </form>
+    <div id="logMealMessage" style="margin-top: 10px;"></div>
+
+    <script src="/static/js/api.js"></script>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

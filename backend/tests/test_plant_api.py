@@ -9,8 +9,8 @@ class TestPlantAPI(unittest.TestCase):
         """Set up test client and reset database before each test."""
         self.app = app.test_client()
         # Configure app for testing
-        app.config['TESTING'] = True 
-        
+        app.config['TESTING'] = True
+
         # Reset in-memory database state directly
         plants_db.clear()
         import backend.main # Import the main module to modify its variable
@@ -27,8 +27,8 @@ class TestPlantAPI(unittest.TestCase):
     def test_create_plant_success(self):
         """Test successful plant creation."""
         payload = {"name": "Apple", "type": "normal"}
-        response = self.app.post('/plants', 
-                                 data=json.dumps(payload), 
+        response = self.app.post('/plants',
+                                 data=json.dumps(payload),
                                  content_type='application/json')
         self.assertEqual(response.status_code, 201)
         response_data = json.loads(response.data)
@@ -55,8 +55,8 @@ class TestPlantAPI(unittest.TestCase):
         """Test getting plants after one has been created."""
         # First, create a plant
         plant_payload = {"name": "Banana", "type": "normal"}
-        self.app.post('/plants', 
-                      data=json.dumps(plant_payload), 
+        self.app.post('/plants',
+                      data=json.dumps(plant_payload),
                       content_type='application/json')
 
         # Then, get plants
@@ -72,8 +72,8 @@ class TestPlantAPI(unittest.TestCase):
     def test_create_plant_missing_name(self):
         """Test plant creation with missing name."""
         payload = {"type": "spice_tea"}
-        response = self.app.post('/plants', 
-                                 data=json.dumps(payload), 
+        response = self.app.post('/plants',
+                                 data=json.dumps(payload),
                                  content_type='application/json')
         self.assertEqual(response.status_code, 400)
         response_data = json.loads(response.data)
@@ -84,8 +84,8 @@ class TestPlantAPI(unittest.TestCase):
     def test_create_plant_missing_type(self):
         """Test plant creation with missing type."""
         payload = {"name": "Ginger"}
-        response = self.app.post('/plants', 
-                                 data=json.dumps(payload), 
+        response = self.app.post('/plants',
+                                 data=json.dumps(payload),
                                  content_type='application/json')
         self.assertEqual(response.status_code, 400)
         response_data = json.loads(response.data)
